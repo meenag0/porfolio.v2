@@ -2,6 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Font Declarations */
+@font-face {
+  font-family: 'Aeonik-Regular';
+  src: url('../app/fonts/resistsans-txtlight-webfont.woff2');
+}
+/* 
+@font-face {
+  font-family: 'Aeonik-Bold';
+  src: url('../app/fonts/NeueHaasDisplayMediu.ttf');
+}
+
+@font-face {
+  font-family: 'Aeonik-Light';
+  src: url('../app/fonts/NeueHaasDisplayMediu.ttf');
+}
+
+@font-face {
+  font-family: 'Aeonik-BoldItalic';
+  src: url('../app/fonts/NeueHaasDisplayMediu.ttf');
+  font-weight: bold;
+  font-style: italic; */
+/* } */
+
+@font-face {
+  font-family: 'Aeonik-LightItalic';
+  src: url('../app/fonts/NeueHaasDisplayMediu.ttf');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Aeonik-RegularItalic';
+  src: url('../app/fonts/NeueHaasDisplayMediu.ttf');
+  font-weight: normal;
+  font-style: italic;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -16,10 +53,12 @@
   }
 }
 
+/* Base styles */
 body {
   background-color: #050008; /* Deep dark purple base */
   min-height: 100vh;
   position: relative;
+  font-family: 'Aeonik-Regular', system-ui, sans-serif;
 }
 
 /* Mouse gradient follower */
@@ -32,8 +71,8 @@ body::before {
   height: 100%;
   background: radial-gradient(
     800px circle at var(--mouse-x) var(--mouse-y),
-    rgba(82, 4, 146, 0.267),
-    rgba(33, 1, 66, 0.05) 40%,
+    rgba(82, 1, 149, 0.411),
+    rgba(34, 1, 66, 0.259) 40%,
     transparent 80%
   );
   pointer-events: none;
@@ -61,4 +100,39 @@ body::before {
   pointer-events: none;
   opacity: 0.4;
   z-index: 0;
+}
+
+/* Font utility classes */
+.font-aeonik-regular {
+  font-family: 'Aeonik-Regular', system-ui, sans-serif;
+}
+
+.font-aeonik-bold {
+  font-family: 'Aeonik-Bold', system-ui, sans-serif;
+}
+
+.font-aeonik-extrabold {
+  font-family: 'Aeonik-Bold', system-ui, sans-serif;
+  font-weight: 800;
+}
+
+.font-aeonik-semibold {
+  font-family: 'Aeonik-Bold', system-ui, sans-serif;
+  font-weight: 600;
+}
+
+.font-aeonik-light {
+  font-family: 'Aeonik-Light', system-ui, sans-serif;
+}
+
+.font-aeonik-light-italic {
+  font-family: 'Aeonik-LightItalic', system-ui, sans-serif;
+}
+
+.font-aeonik-regular-italic {
+  font-family: 'Aeonik-RegularItalic', system-ui, sans-serif;
+}
+
+.font-aeonik-bold-italic {
+  font-family: 'Aeonik-BoldItalic', system-ui, sans-serif;
 }
