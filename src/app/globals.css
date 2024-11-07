@@ -2,28 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Font Declarations */
+/* Import modern fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sohne:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap');
+
+/* Font Declarations for backwards compatibility */
 @font-face {
   font-family: 'Aeonik-Regular';
-  src: url('../app/fonts/resistsans-txtlight-webfont.woff2');
-}
-/* 
-@font-face {
-  font-family: 'Aeonik-Bold';
-  src: url('../app/fonts/NeueHaasDisplayMediu.ttf');
+  src: url('../app/fonts/NeueHaasDisplayLight.ttf');
 }
 
 @font-face {
   font-family: 'Aeonik-Light';
   src: url('../app/fonts/NeueHaasDisplayMediu.ttf');
 }
-
-@font-face {
-  font-family: 'Aeonik-BoldItalic';
-  src: url('../app/fonts/NeueHaasDisplayMediu.ttf');
-  font-weight: bold;
-  font-style: italic; */
-/* } */
 
 @font-face {
   font-family: 'Aeonik-LightItalic';
@@ -35,33 +28,31 @@
 @font-face {
   font-family: 'Aeonik-RegularItalic';
   src: url('../app/fonts/NeueHaasDisplayMediu.ttf');
-  font-weight: normal;
   font-style: italic;
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050008;
+  --foreground: #ffffff;
   --mouse-x: 50%;
   --mouse-y: 50%;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-display: 'Cabinet Grotesk', sans-serif;
+  --font-body: 'Sohne', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
 /* Base styles */
 body {
-  background-color: #050008; /* Deep dark purple base */
+  background-color: var(--background);
   min-height: 100vh;
   position: relative;
-  font-family: 'Aeonik-Regular', system-ui, sans-serif;
+  font-family: var(--font-body);
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Mouse gradient follower */
+/* Enhanced mouse gradient follower */
 body::before {
   content: '';
   position: fixed;
@@ -70,69 +61,232 @@ body::before {
   width: 100%;
   height: 100%;
   background: radial-gradient(
-    800px circle at var(--mouse-x) var(--mouse-y),
-    rgba(82, 1, 149, 0.411),
-    rgba(34, 1, 66, 0.259) 40%,
+    950px circle at var(--mouse-x) var(--mouse-y),
+    rgba(112, 10, 202, 0.266),
+    rgba(34, 1, 66, 0.08) 40%,
     transparent 80%
   );
   pointer-events: none;
   z-index: 1;
 }
 
-/* Add a subtle ambient gradient */
+/* Improved background gradient */
 .bg-gradient-dark {
   background: linear-gradient(
-    45deg,
+    135deg,
     #09000f 0%,
-    #13012a 50%,
+    #13012a 25%,
+    #1e0145 50%,
+    #13012a 75%,
     #09000f 100%
   );
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
 }
 
-/* Optional: Add some noise texture for more depth */
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Enhanced noise texture */
 .noise {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
   pointer-events: none;
-  opacity: 0.4;
+  opacity: 0.3;
   z-index: 0;
 }
 
-/* Font utility classes */
+/* Typography System */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.font-body {
+  font-family: var(--font-body);
+  letter-spacing: -0.01em;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+
+/* Heading Styles */
+h1, .h1 {
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  line-height: 0.95;
+}
+
+h2, .h2 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+h3, .h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* Body Text Styles */
+p, .text-body {
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Legacy Font Classes (for compatibility) */
 .font-aeonik-regular {
-  font-family: 'Aeonik-Regular', system-ui, sans-serif;
+  font-family: var(--font-body);
+  font-weight: 400;
 }
 
 .font-aeonik-bold {
-  font-family: 'Aeonik-Bold', system-ui, sans-serif;
-}
-
-.font-aeonik-extrabold {
-  font-family: 'Aeonik-Bold', system-ui, sans-serif;
-  font-weight: 800;
-}
-
-.font-aeonik-semibold {
-  font-family: 'Aeonik-Bold', system-ui, sans-serif;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-weight: 700;
 }
 
 .font-aeonik-light {
-  font-family: 'Aeonik-Light', system-ui, sans-serif;
+  font-family: var(--font-body);
+  font-weight: 300;
 }
 
-.font-aeonik-light-italic {
-  font-family: 'Aeonik-LightItalic', system-ui, sans-serif;
+/* Button & Interactive Element Styles */
+.interactive-button {
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+  font-weight: 400;
+  transition: all 0.3s ease;
 }
 
-.font-aeonik-regular-italic {
-  font-family: 'Aeonik-RegularItalic', system-ui, sans-serif;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-.font-aeonik-bold-italic {
-  font-family: 'Aeonik-BoldItalic', system-ui, sans-serif;
+::-webkit-scrollbar-track {
+  background: rgba(82, 1, 149, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(82, 1, 149, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(82, 1, 149, 0.3);
+}
+
+/* Text Animation Classes */
+.text-gradient {
+  background: linear-gradient(
+    to right,
+    theme('colors.purple.300'),
+    theme('colors.blue.300'),
+    theme('colors.purple.300')
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shine 8s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Project Card Styles */
+.project-card {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Custom Utility Classes */
+.giant-heading {
+  font-size: clamp(3rem, 8vw, 8rem);
+  line-height: 0.9;
+}
+
+.section-heading {
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1.1;
+}
+
+.text-shadow-sm {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.text-shadow-lg {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Typography */
+@media (max-width: 640px) {
+  :root {
+    --base-font-size: 15px;
+  }
+  
+  .giant-heading {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+  
+  .section-heading {
+    font-size: clamp(1.8rem, 8vw, 3rem);
+  }
+}
+
+/* Focus States */
+:focus-visible {
+  outline: 2px solid theme('colors.purple.300');
+  outline-offset: 2px;
+}
+
+/* Container Queries for Text */
+@container (min-width: 40em) {
+  .prose {
+    font-size: 1.125rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: none;
+  }
+  
+  .font-display {
+    font-family: Georgia, serif;
+  }
+  
+  .font-body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .font-mono {
+    font-family: 'Courier New', monospace;
+  }
 }
