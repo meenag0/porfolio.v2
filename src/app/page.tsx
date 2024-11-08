@@ -19,8 +19,21 @@ interface Project {
 }
 
 export default function HomePage() {
+  const [showScroll, setShowScroll] = useState(true);
 
-  
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setShowScroll(false);
+      } else {
+        setShowScroll(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -189,6 +202,31 @@ export default function HomePage() {
                   </div>
                 </motion.div>
               </motion.div>
+
+              <AnimatePresence>
+            {showScroll && (
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ 
+                  opacity: [0.3, 1, 0.3],
+                  y: [0, 10, 0]
+                }}
+                exit={{ 
+                  opacity: 0,
+                  transition: { duration: 0.2 }
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="absolute bottom-8 left-1/2 -translate-x-1/2"
+              >
+                <ChevronDown className="w-6 h-6 text-purple-200/60" />
+              </motion.div>
+            )}
+          </AnimatePresence>
+
 
               {/* Right column - Spline animation */}
               <div className="w-full lg:w-4/6 z-10 lg:translate-x-14">
