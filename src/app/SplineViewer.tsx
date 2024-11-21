@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 declare global {
   namespace JSX {
@@ -10,24 +10,33 @@ declare global {
         'loading-anim-type'?: string;
         style?: React.CSSProperties;
         className?: string;
+        onLoad?: () => void;
       }
     }
   }
 }
 
-const SplineViewer = () => {
+const SplineViewer = ({ onLoad }: { onLoad?: () => void }) => {
   const viewerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const script = document.createElement('script');
     script.type = 'module';
     script.src = 'https://unpkg.com/@splinetool/viewer@1.9.35/build/spline-viewer.js';
+    
+    script.onload = () => {
+      // Give a small delay to ensure Spline is properly initialized
+      setTimeout(() => {
+        onLoad?.();
+      }, 1000);
+    };
+    
     document.head.appendChild(script);
 
     return () => {
       document.head.removeChild(script);
     };
-  }, []);
+  }, [onLoad]);
 
   return (
     <spline-viewer 
