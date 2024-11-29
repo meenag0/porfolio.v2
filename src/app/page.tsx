@@ -329,7 +329,8 @@ const experiences: Experience[] = [
     company: "Royal Bank of Canada (RBC)",
     period: "May 2023 - Aug 2023",
     description: [
-      "Engineered resolution of 40+ critical incidents across AWS (EC2, Cloudformation, Lambda, S3, VPC) and Azure (AKS, Databricks, ACR, App Services), tackling infrastructure provisioning, enhancing serverless performance, and more.",
+      "Chosen to present at SLT Showcase to senior leaders for outstanding performance",
+      "Engineered resolution of 40+ critical incidents across AWS (EC2, Cloudformation, Lambda, S3, VPC) and Azure (AKS, Databricks, ACR, App Services), tackling infrastructure provisioning, enhancing serverless performance, etc.",
       "Optimized and managed critical cloud infrastructure supporting 20,000+ users across AWS/Azure, leveraging ACR/ECR, Kubernetes(AKS), Azure AD, AKV, Azure MI & AWS IAM.",
       "Onboarded enterprise applications across AWS and Azure by implementing Terraform, configuring network policies, and enforcing security compliance."
     ],
