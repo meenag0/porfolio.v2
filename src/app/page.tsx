@@ -327,7 +327,7 @@ const experiences: Experience[] = [
   {
     title: "Technical Systems Analyst Intern",
     company: "Royal Bank of Canada (RBC)",
-    period: "May 2023 - Aug 2023",
+    period: "Sept 2024 - Dec 2024",
     description: [
       "Chosen to present at SLT Showcase to senior leaders for outstanding performance",
       "Engineered resolution of 40+ critical incidents across AWS (EC2, Cloudformation, Lambda, S3, VPC) and Azure (AKS, Databricks, ACR, App Services), tackling infrastructure provisioning, enhancing serverless performance, etc.",
@@ -356,7 +356,7 @@ const experiences: Experience[] = [
   {
     title: "Software Developer",
     company: "Google Developer Group Waterloo",
-    period: "Sept 2022 - Dec 2022",
+    period: "Sept 2024 - Present",
     description: [
       "Developed responsive events page for GDSC Waterloo's website using React, TypeScript and TanStack Router, serving 500+ student members.",
       "Built dynamic event card system with Tailwind CSS featuring dual viewing modes and real-time attendee tracking for Google and club events.",
@@ -376,7 +376,7 @@ const experiences: Experience[] = [
   {
     title: "AI & Azure Engineer Intern",
     company: "Microsoft WEA\n @UWaterloo",
-    period: "Jan 2022 - Apr 2022",
+    period: "Jan 2023 - Apr 2023",
     description: [
       "Designed AI pipeline using Azure ML and Azure DB to generate financial recommendations.",
       "Refined stock and ETF performance prediction using advanced regression models, integrating personalized recommendations through content-based filtering for tailored insights.",
