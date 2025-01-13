@@ -394,7 +394,7 @@ const experiences: Experience[] = [
   {
     title: "Lead Web Developer",
     company: "The Fraser Post",
-    period: "Jan 2022 - Apr 2022",
+    period: "Jan 2020 - Jun 2023",
     description: [
       "Managed and delivered a responsive website using React, HTML/CSS and JS following the SDLC",
       "Developed dynamic features using Microsoft Excel to manage content scheduling and tracking",
