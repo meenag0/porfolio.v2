@@ -324,8 +324,33 @@ const interests: Interest[] = [
 ];
 
 const experiences: Experience[] = [
+    {
+    title: "Software Engineer",
+    company: "Northbridge Financial Corporation",
+    period: "May 2025 - Aug 2025",
+    description: [
+      "Developed a cloud-native resource analyzer in Go (client-go, Docker), exposing REST/gRPC APIs and a React/TypeScript dashboard for real-time monitoring of 20+ workloads",
+      "Created Helm charts and Terraform modules for AKS, integrating ConfigMaps, RBAC, load balancers and CI/CD pipelines, automating end-to-end deployment for 10+ services",
+      "Developed financial backend services in Go, designing scalable APIs, microservices, and service orchestration pipelines to process workloads with high reliability, performance, and compliance",
+    ],
+    technologies: [
+    "Go",
+    "Docker",
+    "Terraform",
+    "Helm",
+    "React",
+    "Typescript",
+    "Ansible",
+    "Kubernetes (AKS)",
+    "Argo-CD",
+    "CI/CD pipelines",
+    "ConfigMaps",
+    
+    ],
+    logo: "/images/nbfc.png"  
+  },
   {
-    title: "Technical Systems Analyst Intern",
+    title: "Software Developer",
     company: "Royal Bank of Canada (RBC)",
     period: "Sept 2024 - Dec 2024",
     description: [
