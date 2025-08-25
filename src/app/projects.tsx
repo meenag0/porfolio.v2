@@ -8,10 +8,10 @@ interface Project {
   title: string;
   description: string;
   tags: string[];
-  link: string;
+  link?: string;   // <-- make optional
   image: string;
   thumbnail?: string;
-  video?: string; // 👈 Add this
+  video?: string;
   modalContent: {
     fullDescription: string;
     timeline: string;
@@ -289,13 +289,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
                 <MousePointer className="w-4 h-4" />
               </motion.button>
               
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                onClick={handleExternalLinkClick}
-                className="p-2 bg-purple-500/10 rounded-full text-purple-200/80 hover:text-purple-200 transition-colors"
-              >
-                <ExternalLink className="w-4 h-4" />
-              </motion.button>
+              {(project.video || project.link) && (
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  onClick={handleExternalLinkClick}
+                  className="p-2 bg-purple-500/10 rounded-full text-purple-200/80 hover:text-purple-200 transition-colors"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                </motion.button>
+              )}
+
 
               {project.modalContent.links.github && (
                 <motion.a

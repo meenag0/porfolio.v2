@@ -38,7 +38,7 @@ interface Project {
   title: string;
   description: string;
   tags: string[];
-  link: string;
+  link?: string;
   image: string;
   thumbnail?: string;
   video?: string; // 👈 Add this
@@ -65,7 +65,6 @@ const projects: Project[] = [
     title: "CodeDeck 💻",
     description: "An iOS application for interactive algorithm practice with flashcards, a custom code editor, and AI-powered solution validation.",
     tags: ["swift", "swiftui", "combine", "sqlite", "mvvm", "async-await", "ollama-llm", "ios"],
-    link: "https://github.com/meenag0/CodeDeck",
     image: "/images/codeDeck1.png",
     video: "/videos/codeDeckDemo.mov",
 
@@ -130,7 +129,6 @@ const projects: Project[] = [
     title: "EcoTrackr 🌱",
     description: "A cross-platform mobile app for tracking personal carbon footprint and promoting eco-conscious living.",
     tags: ["react-native", "typescript", "fastAPI", "REST", "python", "node.js", "expo"],
-    link: "https://ecotrackr.app",
     image: "/images/ecotrackr.png",
     modalContent: {
       fullDescription: "EcoTrackr is a cross-platform mobile app that allows users to track their carbon footprint, develop habits to live more eco-consciously, and see information related to the environment, such as air quality, solar distribution, and nearby conservatories/trails. It's built using react-native, utilizing external apis as well as a backend server to implement a RESTful architecture.",
@@ -161,7 +159,6 @@ const projects: Project[] = [
     title: "2Read [Rust] 📖",
     description: "A Rust-based web scraping application that generates a reading list pulling from my favourite publications.",
     tags: ["rust", "javascript", "web-scraping", "heroku", "actix", "reqwest"],
-    link: "https://2read.rs",
     image: "/images/toread.png",
     modalContent: {
       fullDescription: "2Read is a Rust-based web scraping application that generates a reading list by gathering articles from technical publications like Quanta Magazine, Towards Data Science, Wired, and Scientific American. It utilizes reqwest for HTTP requests, scraper for HTML parsing, and actix-web for building the server. Asynchronous tasks are managed using async-std.",
@@ -191,7 +188,6 @@ const projects: Project[] = [
     title: "Flappy Bird 🐤",
     description: "A browser-based recreation of the classic Flappy Bird game built with JavaScript and Phaser.",
     tags: ["javascript", "phaser", "html/css"],
-    link: "https://flappybird-demo.com",
     image: "/images/flappybird.png",
     modalContent: {
       fullDescription: "This browser-based Flappy Bird game is developed using Javascript, Phaser and HTML. It utilizes Phaser's Arcade physics system to handle game mechanics efficiently. The game features an angry bird sprite that players can control using the up arrow key to navigate through columns without colliding with them or the ground. The game logic continuously updates to check for user input and update the game state accordingly.",
@@ -222,7 +218,6 @@ const projects: Project[] = [
     title: "Price Predictor 🏠",
     description: "Machine learning model for predicting housing prices using California housing dataset.",
     tags: ["python", "scikit-learn", "pandas", "tensorflow", "keras", "matplotlib"],
-    link: "https://price-predictor-demo.com",
     image: "/images/price-predictor.png",
     modalContent: {
       fullDescription: "This Housing Price Prediction Model uses python and regression models to predict housing prices using the California housing dataset. Pandas is used for data exploration/visualization to understand feature distributions. I encoded the categorical data, and created custom transformers to add attributes to the dataset. Random Forest, Support Vector Machine, and XGBoost are employed for regression tasks, and hyperparameter tuning is performed using Scikit-learn's GridSearchCV.",
@@ -253,7 +248,6 @@ const projects: Project[] = [
     title: "MNIST Classify ✍️",
     description: "A machine learning classifier for recognizing handwritten digits using the MNIST dataset.",
     tags: ["python", "pandas", "sklearn", "jupyter", "matplotlib", "numpy"],
-    link: "https://mnist-classify-demo.com",
     image: "/images/mnist.png",
     modalContent: {
       fullDescription: "This is a MNIST classifier to recognize handwritten digits. It splits the data into a training and testing set, and a KNN classifier is then trained on the training data. Model evaluation is performed using cross-validation and the F1 score metric. I used various libraries in python for this, such as Pandas for data manipulation, NumPy for numerical computations, Matplotlib for visualization, and Scikit-learn for machine learning tasks.",
@@ -284,7 +278,6 @@ const projects: Project[] = [
     title: "Portfolio.v1 💻",
     description: "First iteration of my personal portfolio showcasing projects+experiences, built with Three.js and React.",
     tags: ["javascript", "react", "node.js", "three.js", "vite", "spline"],
-    link: "https://meenagopalakrishnan.com",
     image: "/images/portfoliov1.png",
     modalContent: {
       fullDescription: "This is my portfolio website showcasing my projects, experiences, interests, and more. It's built using html, javascript, css, node.js, and vite. While making this, I also experimented with Three.js, React Three Fibre, and a variety of frameworks. This is a continuous work in progress.",
