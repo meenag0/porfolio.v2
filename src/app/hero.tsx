@@ -14,7 +14,7 @@ interface HeroSectionProps {
 
 export default function HeroSection({ showScroll, onSplineLoad }: HeroSectionProps) {
   return (
-    <section className="relative min-h-[100vh] flex items-center overflow-hidden">
+    <section id="home" className="relative min-h-[100vh] flex items-center overflow-hidden">
       <div className="w-full max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 px-4 sm:px-6 lg:px-8 py-4 lg:py-0">
           {/* Left column - Text content */}

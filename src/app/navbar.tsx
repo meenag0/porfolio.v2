@@ -29,7 +29,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-12">
           {/* Logo/Name */}
           <motion.a
-            href="#"
+            href="#home"
             className="text-purple-200/90 font-display text-base tracking-tight pl-8"
             whileHover={{ scale: 1.05 }}
           >
@@ -39,9 +39,9 @@ const Navbar = () => {
           {/* Navigation Links */}
           <div className="flex space-x-8 pr-8">
             {[
-              { name: 'home', href: '#' },
-              { name: 'work', href: '#projects' },
-              { name: 'resume', href: '/images/Resume-MeenaG.pdf' },
+              { name: 'home', href: '#home' },
+              { name: 'projects', href: '#projects' },
+              { name: 'work', href: '#experience' },
               { name: 'connect', href: '#connect-section' }
             ].map((item) => (
               <motion.a
