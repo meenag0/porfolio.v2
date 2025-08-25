@@ -41,6 +41,7 @@ interface Project {
   link: string;
   image: string;
   thumbnail?: string;
+  video?: string; // 👈 Add this
   modalContent: {
     fullDescription: string;
     timeline: string;
@@ -57,8 +58,42 @@ interface Project {
   };
 }
 
+
 // Example project data with the correct type:
 const projects: Project[] = [
+    {
+    title: "CodeDeck 💻",
+    description: "An iOS application for interactive algorithm practice with flashcards, a custom code editor, and AI-powered solution validation.",
+    tags: ["swift", "swiftui", "combine", "sqlite", "mvvm", "async-await", "ollama-llm", "ios"],
+    link: "https://github.com/meenag0/CodeDeck",
+    image: "/images/codeDeck1.png",
+    video: "/videos/codeDeckDemo.mov",
+
+    modalContent: {
+      fullDescription: "CodeDeck is a LeetCode-style iOS app that allows users to practice algorithm problems using interactive flashcards and a built-in code editor. It integrates on-device LLM inference with Ollama (CodeLlama/DeepSeek) for real-time code evaluation, achieving sub-3s feedback without relying on external APIs. The app is built with SwiftUI and MVVM architecture, using Combine for reactive state management and SQLite for offline-first persistence.",
+      timeline: "Developed May 2025 - Aug 2025",
+      techStack: [
+        {
+          category: "Core Tech",
+          items: ["Swift", "SwiftUI", "MVVM", "Combine", "SQLite", "async/await"]
+        },
+        {
+          category: "AI & Parsing",
+          items: ["Ollama LLM (CodeLlama/DeepSeek)", "JSON Parsing", "Regex Pipelines"]
+        }
+      ],
+      keyFeatures: [
+        "100+ algorithm practice problems",
+        "Interactive flashcards with code editor",
+        "AI-powered solution validation (sub-3s feedback)",
+        "Offline-first persistence with SQLite",
+        "Scalable MVVM architecture with modular services"
+      ],
+      links: {
+        github: "https://github.com/meenag0/CodeDeck"
+      }
+    }
+  },
   {
     title: "cine.fm 🎶",
     description: "A web application using machine learning to generate playlists based on movie selections.",

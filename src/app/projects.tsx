@@ -11,6 +11,7 @@ interface Project {
   link: string;
   image: string;
   thumbnail?: string;
+  video?: string; // 👈 Add this
   modalContent: {
     fullDescription: string;
     timeline: string;
@@ -26,6 +27,7 @@ interface Project {
     };
   };
 }
+
 
 interface ProjectModalProps {
   project: Project;
@@ -176,7 +178,6 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
   );
 };
 
-// Project Card Component
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -188,6 +189,66 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
     const y = e.clientY - rect.top;
     cardRef.current.style.setProperty('--mouse-x', `${x}px`);
     cardRef.current.style.setProperty('--mouse-y', `${y}px`);
+  };
+
+  const openVideoInNewTab = () => {
+    const videoWindow = window.open('', '_blank');
+    if (videoWindow) {
+      videoWindow.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>${project.title} - Demo Video</title>
+          <style>
+            body {
+              margin: 0;
+              padding: 20px;
+              background: #000;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              min-height: 100vh;
+              font-family: Arial, sans-serif;
+            }
+            h1 {
+              color: white;
+              text-align: center;
+              margin-bottom: 20px;
+              font-size: 1.5rem;
+            }
+            video {
+              max-width: 90vw;
+              max-height: 80vh;
+              border-radius: 8px;
+              box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            }
+          </style>
+        </head>
+        <body>
+          <h1>${project.title} Demo</h1>
+          <video controls autoplay>
+            <source src="${project.video}" type="video/mp4">
+            <source src="${project.video}" type="video/mov">
+            <source src="${project.video}" type="video/webm">
+            Your browser does not support the video tag.
+          </video>
+        </body>
+        </html>
+      `);
+      videoWindow.document.close();
+    }
+  };
+
+  const handleExternalLinkClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    if (project.video) {
+      openVideoInNewTab();
+    } else {
+      window.open(project.link, "_blank");
+    }
   };
 
   return (
@@ -217,34 +278,37 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
               {project.title}
             </h3>
             <div className="flex gap-2" onClick={(e) => e.stopPropagation()}>
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsModalOpen(true);
-              }}
-              className="p-2 bg-purple-500/10 rounded-full text-purple-200/80 hover:text-purple-200 transition-colors cursor-pointer"
-            >
-              <MousePointer className="w-4 h-4" />
-            </motion.button>
-              <motion.a
+              <motion.button
                 whileHover={{ scale: 1.1 }}
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsModalOpen(true);
+                }}
+                className="p-2 bg-purple-500/10 rounded-full text-purple-200/80 hover:text-purple-200 transition-colors"
+              >
+                <MousePointer className="w-4 h-4" />
+              </motion.button>
+              
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                onClick={handleExternalLinkClick}
                 className="p-2 bg-purple-500/10 rounded-full text-purple-200/80 hover:text-purple-200 transition-colors"
               >
                 <ExternalLink className="w-4 h-4" />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.1 }}
-                href={project.modalContent.links.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 bg-purple-500/10 rounded-full text-purple-200/80 hover:text-purple-200 transition-colors"
-              >
-                <Github className="w-4 h-4" />
-              </motion.a>
+              </motion.button>
+
+              {project.modalContent.links.github && (
+                <motion.a
+                  whileHover={{ scale: 1.1 }}
+                  href={project.modalContent.links.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="p-2 bg-purple-500/10 rounded-full text-purple-200/80 hover:text-purple-200 transition-colors"
+                >
+                  <Github className="w-4 h-4" />
+                </motion.a>
+              )}
             </div>
           </div>
           
@@ -275,6 +339,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
   );
 };
 
+
+
 // Projects Section Component
 const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
   return (
@@ -297,5 +363,55 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
     </section>
   );
 };
+
+
+interface VideoModalProps {
+  videoUrl: string;
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const VideoModal: React.FC<VideoModalProps> = ({ videoUrl, isOpen, onClose }) => {
+  if (!isOpen) return null;
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={onClose}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm"
+        >
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={(e: React.MouseEvent) => e.stopPropagation()}
+            className="relative w-full max-w-4xl p-4 rounded-xl bg-black"
+          >
+            {/* Close Button */}
+            <button
+              onClick={onClose}
+              className="absolute top-3 right-3 p-2 rounded-full bg-black/40 hover:bg-black/70 transition"
+            >
+              <X className="w-5 h-5 text-white" />
+            </button>
+
+            <video
+              src={videoUrl}
+              controls
+              autoPlay
+              className="w-full h-auto rounded-lg"
+            />
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+
 
 export default ProjectsSection;
