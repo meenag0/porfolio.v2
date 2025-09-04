@@ -52,7 +52,7 @@ export default function HeroSection({ showScroll, onSplineLoad }: HeroSectionPro
                     </span>
                   </h1>
                   <div className="mt-2 mb-0 text-lg sm:text-xl lg:text-[1.3rem] font-display font-normal tracking-wide text-purple-100/80">
-                    engineer  ∙  developer  ∙  innovator
+                    engineer  ∙  developer  ∙  creative
                   </div>
                 </div>
               </motion.div>
