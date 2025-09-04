@@ -3,12 +3,12 @@ import { motion } from 'framer-motion';
 
 const InterestsSection = () => {
   const interests = [
-    { name: "Machine Learning", delay: 0 },
+    { name: "End-to-End Development", delay: 0 },
     { name: "Cloud Computing", delay: 0.1 },
-    { name: "Neural Networks", delay: 0.2 },
+    { name: "Fintech", delay: 0.2 },
     { name: "Cryptography", delay: 0.3 },
-    { name: "Data Science", delay: 0.4 },
-    { name: "GUI Development", delay: 0.5 },
+    { name: "Machine Learning", delay: 0.4 },
+    { name: "GUIs", delay: 0.5 },
     { name: "Generative AI", delay: 0.6 },
     { name: "Sustainability", delay: 0.7 },
     { name: "Music", delay: 0.8 }
