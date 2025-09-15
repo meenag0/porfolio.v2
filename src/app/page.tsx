@@ -359,7 +359,7 @@ const experiences: Experience[] = [
     description: [
       "Developed a cloud-native resource analyzer in Go (client-go, Docker), exposing REST/gRPC APIs and a React/TypeScript dashboard for real-time monitoring of 20+ workloads",
       "Created Helm charts and Terraform modules for AKS, integrating ConfigMaps, RBAC, load balancers and CI/CD pipelines, automating end-to-end deployment for 10+ services",
-      "Developed financial backend services in Go, designing scalable APIs, microservices, and service orchestration pipelines to process workloads with high reliability, performance, and compliance",
+      "Deployed 15+ containerized microservices using Helm charts and Ansible, showing scalable infra management",
     ],
     technologies: [
     "Go",
