@@ -158,7 +158,7 @@ const PROJECTS: Project[] = [
   },
   {
     title: 'EcoTrackr',
-    github: 'https://github.com/meenag0/EcoTrackr-Backend',
+    github: 'https://github.com/meenag0/Ecotrackr',
     description:
       'A cross-platform mobile app for tracking personal carbon footprint and promoting eco-conscious living.',
     tags: 'react-native · typescript · fastAPI · REST · python · node.js · expo',
@@ -185,6 +185,10 @@ interface Experience {
   bullets: string[];
   technologies: string;
   logo?: string;
+  /* Some marks only work on one ground. The Amazon wordmark is black in its source, so
+     the dark theme uses a white cut; without a light variant it would vanish on the
+     light theme. */
+  logoLight?: string;
   caseStudy?: string[];
   highlights?: string[];
 }
@@ -201,6 +205,7 @@ const EXPERIENCE: Experience[] = [
     ],
     technologies: 'Python · TypeScript · Node.js · React · AWS Lambda · DynamoDB · SageMaker Pipelines · Docker · CI/CD · REST',
     logo: '/images/amazon.svg',
+    logoLight: '/images/amazon-light.svg',
     highlights: [
       'Made ML model certification 90% faster, 3 months to under a week',
       'Built it end to end: data pipeline, evaluation engine, 15-endpoint REST API, React dashboard, CI/CD',
@@ -624,8 +629,20 @@ function ExperienceRow({ exp }: { exp: Experience }) {
                 alt={exp.company}
                 width={40}
                 height={40}
-                className="max-w-full max-h-full w-auto h-auto object-contain"
+                className={`max-w-full max-h-full w-auto h-auto object-contain${
+                  exp.logoLight ? ' logo-dark' : ''
+                }`}
               />
+              {exp.logoLight && (
+                <Image
+                  src={exp.logoLight}
+                  alt=""
+                  aria-hidden="true"
+                  width={40}
+                  height={40}
+                  className="logo-light max-w-full max-h-full w-auto h-auto object-contain"
+                />
+              )}
             </div>
           ) : (
             <div
@@ -1362,6 +1379,13 @@ export default function RedesignPage() {
           }
         }
 
+        /* Only one of the two marks is ever shown; the other is display:none rather
+           than transparent so it is not read out twice. */
+        [data-theme='dark'] .logo-light,
+        [data-theme='light'] .logo-dark {
+          display: none;
+        }
+
         .scroll-cue {
           display: inline-block;
           animation: scroll-cue-bob 2s ease-in-out infinite;
@@ -1394,6 +1418,7 @@ export default function RedesignPage() {
       `}</style>
 
       <main
+        data-theme={theme}
         style={{ ...tokens, backgroundColor: 'var(--bg)', color: 'var(--ink)' }}
         className={`${display.variable} ${body.variable} ${mono.variable} ${caption.variable} min-h-screen transition-colors duration-300`}
       >
