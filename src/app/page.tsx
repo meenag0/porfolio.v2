@@ -203,7 +203,7 @@ const EXPERIENCE: Experience[] = [
     logo: '/images/amazon.svg',
     highlights: [
       'Made ML model certification 90% faster, 3 months to under a week',
-      'Built every layer: evaluation engine, REST API, React dashboard, CI/CD',
+      'Built it end to end: data pipeline, evaluation engine, 15-endpoint REST API, React dashboard, CI/CD',
       'Built the evaluation system with 40+ metrics for ML models guiding millions in marketing spend',
     ],
     caseStudy: [
