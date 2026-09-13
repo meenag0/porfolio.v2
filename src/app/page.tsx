@@ -53,7 +53,7 @@ function getTokens(theme: Theme): React.CSSProperties {
       '--muted': '#b2c3d2',
       '--muted-2': '#8ea1b3',
       '--accent': '#ff8055',
-      '--shimmer-hi': '#5fd8f5',
+      '--shimmer-hi': '#8ff0c8',
       /* The whole falloff in one token. Five stops approximating an exponential
          decay rather than a straight ramp: half the peak is gone by 22% of the
          radius and 97% of it by 70%, so there is no distance at which the light
@@ -80,7 +80,7 @@ function getTokens(theme: Theme): React.CSSProperties {
     '--muted': '#3a4756',
     '--muted-2': '#586675',
     '--accent': '#b8330a',
-    '--shimmer-hi': '#0a6d88',
+    '--shimmer-hi': '#0a8a63',
     '--glow-stops':
       'rgba(10,109,136,0.038) 0%, rgba(10,109,136,0.021) 22%, rgba(10,109,136,0.010) 45%, rgba(10,109,136,0.003) 70%, rgba(10,109,136,0) 100%',
     '--paper': '#fcfbf7',
@@ -1294,32 +1294,71 @@ export default function RedesignPage() {
            is --shimmer-hi, an aqua pulled from the water palette. It has to be saturated
            rather than just brighter than --ink: in dark mode --ink is already near-white,
            so a white highlight had nothing to travel through and read as no effect. */
+        /* The company names sit at --muted and are lit by a band crossing them, with a
+           glow blooming behind the letters in sync. Starting from --muted rather than
+           --ink matters: ink is #eaf1f7, so a bright peak against it was only 0.13
+           luminance apart and read as nothing. From muted the swing is ~5x that.
+
+           background-clip:text forces color:transparent, which kills text-shadow, so the
+           glow has to be a pseudo-element behind the word rather than a shadow on it. */
         .shimmer {
+          position: relative;
           font-weight: 600;
           background-image: linear-gradient(
-            100deg,
-            var(--ink) 0%,
-            var(--ink) 26%,
-            var(--shimmer-hi) 44%,
-            var(--shimmer-hi) 56%,
-            var(--ink) 74%,
-            var(--ink) 100%
+            20deg,
+            var(--muted) 0%,
+            var(--muted) 32%,
+            var(--shimmer-hi) 50%,
+            var(--muted) 68%,
+            var(--muted) 100%
           );
-          background-size: 220% 100%;
+          background-size: 260% 100%;
           -webkit-background-clip: text;
           background-clip: text;
           color: transparent;
-          animation: shimmer-sweep 8.5s linear infinite;
+          animation: shimmer-sweep 4s ease-in-out infinite;
         }
-        .shimmer-delayed {
-          animation-delay: 3.2s;
+        .shimmer::after {
+          content: '';
+          position: absolute;
+          inset: -0.35em -0.5em;
+          border-radius: 0.4em;
+          pointer-events: none;
+          background: radial-gradient(
+            closest-side,
+            color-mix(in srgb, var(--shimmer-hi) 42%, transparent),
+            transparent 75%
+          );
+          opacity: 0;
+          animation: shimmer-glow 4s ease-in-out infinite;
         }
+        .shimmer-delayed,
+        .shimmer-delayed::after {
+          animation-delay: 1.6s;
+        }
+        /* crosses over half the cycle, so it reads as near-continuous rather than a rare flash */
         @keyframes shimmer-sweep {
           0% {
-            background-position: 140% 0;
+            background-position: 150% 0;
+          }
+          52% {
+            background-position: -50% 0;
           }
           100% {
-            background-position: -40% 0;
+            background-position: -50% 0;
+          }
+        }
+        @keyframes shimmer-glow {
+          0%,
+          6% {
+            opacity: 0;
+          }
+          26% {
+            opacity: 1;
+          }
+          52%,
+          100% {
+            opacity: 0;
           }
         }
 
@@ -1346,6 +1385,10 @@ export default function RedesignPage() {
             animation: none;
             background-image: none;
             color: var(--ink);
+          }
+          .shimmer::after {
+            animation: none;
+            opacity: 0;
           }
         }
       `}</style>
