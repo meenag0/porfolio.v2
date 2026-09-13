@@ -806,11 +806,11 @@ const PHOTOS: Photo[] = [
   { src: '/images/life/iceland-horse.jpg', caption: 'horseriding in lava fields!' },
   { src: '/images/life/puppy-closeup.jpg', caption: 'my buddy from puppy yoga' },
   { src: '/images/life/above-the-clouds.jpg', caption: 'window seat view :)' },
-  { src: '/images/life/seafood-boil.jpg', caption: 'missing this seafood boil...' },
+  { src: '/images/life/seafood-boil.jpg', caption: 'some very yummy seafood boil' },
   { src: '/images/life/glacier-crevasse.jpg', caption: 'glacier hiking in iceland' },
   { src: '/images/life/cat-sprawled.jpg', caption: 'silly lil kitty' },
   { src: '/images/life/medieval-times.jpg', caption: 'medieval times!' },
-  { src: '/images/life/forest.jpg', caption: 'hiked deep cove quarry in the rain' },
+  { src: '/images/life/forest.jpg', caption: 'hiking deep cove quarry in the rain' },
   { src: '/images/life/glacier-ash.jpg', caption: 'more of iceland!' },
 ];
 
