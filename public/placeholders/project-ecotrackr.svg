@@ -1,15 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750">
   <defs>
     <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#211a2e"/>
-      <stop offset="100%" stop-color="#0b0710"/>
+      <stop offset="0%" stop-color="#16273c"/>
+      <stop offset="100%" stop-color="#0b1524"/>
     </linearGradient>
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="rgba(234,241,247,0.07)" stroke-width="1"/>
     </pattern>
   </defs>
-  <rect width="1200" height="800" fill="url(#g)"/>
-  <rect width="1200" height="800" fill="url(#grid)"/>
-  <text x="50%" y="46%" font-family="monospace" font-size="52" font-weight="bold" fill="rgba(236,232,245,0.85)" text-anchor="middle">EcoTrackr</text>
-  <text x="50%" y="54%" font-family="monospace" font-size="20" letter-spacing="2" fill="rgba(236,232,245,0.4)" text-anchor="middle">ADD SCREENSHOT</text>
+  <rect width="1200" height="750" fill="url(#g)"/>
+  <rect width="1200" height="750" fill="url(#grid)"/>
+  <rect x="0.5" y="0.5" width="1199" height="749" fill="none" stroke="rgba(234,241,247,0.16)" stroke-width="1"/>
+  <text x="50%" y="47%" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="42" font-weight="500" fill="rgba(234,241,247,0.82)" text-anchor="middle">EcoTrackr</text>
+  <text x="50%" y="56%" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" letter-spacing="3" fill="#ff8055" text-anchor="middle">SCREENSHOT COMING</text>
 </svg>

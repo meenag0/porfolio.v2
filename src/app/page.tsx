@@ -805,7 +805,7 @@ interface Photo {
 const PHOTOS: Photo[] = [
   { src: '/images/life/iceland-horse.jpg', caption: 'horseriding in lava fields!' },
   { src: '/images/life/puppy-closeup.jpg', caption: 'my buddy from puppy yoga' },
-  { src: '/images/life/above-the-clouds.jpg', caption: 'i like the window seat' },
+  { src: '/images/life/above-the-clouds.jpg', caption: 'window seat view :)' },
   { src: '/images/life/seafood-boil.jpg', caption: 'i still think about this seafood boil' },
   { src: '/images/life/glacier-crevasse.jpg', caption: 'glacier hiking in iceland' },
   { src: '/images/life/cat-sprawled.jpg', caption: 'silly lil kitty' },
@@ -1483,7 +1483,7 @@ export default function RedesignPage() {
                   className="font-[family-name:var(--font-display)] font-bold tracking-tight text-3xl sm:text-4xl"
                   style={{ color: 'var(--ink)' }}
                 >
-                  Projects
+                  Selected Projects
                 </h2>
                 <span
                   className="font-[family-name:var(--font-mono)] text-[0.9rem] uppercase tracking-[0.12em] hidden sm:block"
