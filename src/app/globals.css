@@ -3,9 +3,6 @@
 @tailwind utilities;
 
 /* Import modern fonts */
-@import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@300;400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Sohne:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap');
 
 /* Font Declarations for backwards compatibility */
 @font-face {
@@ -50,24 +47,6 @@ body {
   letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-/* mouse gradient follower */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(
-    950px circle at var(--mouse-x) var(--mouse-y),
-    rgba(112, 10, 202, 0.266),
-    rgba(34, 1, 66, 0.08) 40%,
-    transparent 80%
-  );
-  pointer-events: none;
-  z-index: 1;
 }
 
 /* Typography System */
@@ -281,15 +260,7 @@ section {
 
 /* Enhance mouse gradient for better mobile performance */
 @media (max-width: 640px) {
-  body::before {
-    background: radial-gradient(
-      600px circle at var(--mouse-x) var(--mouse-y),
-      rgba(112, 10, 202, 0.1),
-      rgba(34, 1, 66, 0.04) 40%,
-      transparent 80%
-    );
   }
-}
 
 /* Print Styles */
 @media print {

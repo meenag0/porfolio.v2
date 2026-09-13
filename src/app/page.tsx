@@ -1084,13 +1084,6 @@ export default function RedesignPage() {
       {/* the shared globals.css ships a purple mouse-follow glow and a boxed navbar —
           this redesign draft uses its own rail nav and palette, so switch both off here only */}
       <style jsx global>{`
-        body::before {
-          content: none;
-        }
-        body > nav {
-          display: none !important;
-        }
-
         /* The print itself. A polaroid is a stiff plastic-backed sheet about a
            millimetre thick, so it gets three things a flat div does not: a visible
            cut edge, a lit top and shaded bottom face, and a specular band that moves
