@@ -806,7 +806,7 @@ const PHOTOS: Photo[] = [
   { src: '/images/life/iceland-horse.jpg', caption: 'horseriding in lava fields!' },
   { src: '/images/life/puppy-closeup.jpg', caption: 'my buddy from puppy yoga' },
   { src: '/images/life/above-the-clouds.jpg', caption: 'window seat view :)' },
-  { src: '/images/life/seafood-boil.jpg', caption: 'i still think about this seafood boil' },
+  { src: '/images/life/seafood-boil.jpg', caption: 'missing this seafood boil...' },
   { src: '/images/life/glacier-crevasse.jpg', caption: 'glacier hiking in iceland' },
   { src: '/images/life/cat-sprawled.jpg', caption: 'silly lil kitty' },
   { src: '/images/life/medieval-times.jpg', caption: 'medieval times!' },
