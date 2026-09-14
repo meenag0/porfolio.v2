@@ -189,6 +189,9 @@ interface Experience {
      the dark theme uses a white cut; without a light variant it would vanish on the
      light theme. */
   logoLight?: string;
+  /* The "Current" badge is inferred from the period containing "present". Set this to
+     false on a role where the dates still say Present but the badge is not wanted. */
+  current?: boolean;
   caseStudy?: string[];
   highlights?: string[];
 }
@@ -284,7 +287,7 @@ const EXPERIENCE: Experience[] = [
   {
     title: 'Software Developer',
     company: 'Google Developer Group Waterloo',
-    period: 'Sept 2024 - Present',
+    period: 'Sept 2024 - Dec 2025',
     bullets: [
       "Developed responsive events page for GDSC Waterloo's website using React, TypeScript and TanStack Router, serving 500+ student members.",
       'Built dynamic event card system with Tailwind CSS featuring dual viewing modes and real-time attendee tracking for Google and club events.',
@@ -606,7 +609,7 @@ function CaseStudyOverlay({
 
 function ExperienceRow({ exp }: { exp: Experience }) {
   const [expanded, setExpanded] = useState(false);
-  const isCurrent = exp.period.toLowerCase().includes('present');
+  const isCurrent = exp.current ?? exp.period.toLowerCase().includes('present');
   const highlights = exp.highlights ?? exp.bullets;
 
   return (
@@ -1428,7 +1431,7 @@ export default function RedesignPage() {
         {/* Header — transparent over the hero, glass once past it. Colors come from the
             theme tokens throughout now that there's no video to sit on. */}
         <header
-          className="sticky top-0 z-20 relative flex flex-wrap items-center justify-between gap-y-3 px-6 sm:px-12 py-6 transition-colors duration-500"
+          className="sticky top-0 z-20 relative flex items-center justify-between gap-4 px-5 sm:px-12 py-4 sm:py-6 transition-colors duration-500"
           style={{
             /* Glass rather than a solid fill — the gradient stays visible through the
                bar, and the blur is what keeps the nav legible over scrolling content. */
@@ -1445,13 +1448,18 @@ export default function RedesignPage() {
             <span className="sm:hidden">meena g.</span>
             <span className="hidden sm:inline">meena gopalakrishnan</span>
           </a>
-          <div className="flex items-center gap-5 sm:gap-10">
-            <nav className="flex gap-5 sm:gap-10">
+          <div className="flex items-center gap-4 sm:gap-10">
+            <nav className="flex gap-4 sm:gap-10">
               {NAV.map((n) => (
                 <a
                   key={n.label}
                   href={n.href}
-                  className="font-[family-name:var(--font-mono)] text-[0.65rem] sm:text-xs uppercase tracking-[0.1em] hover:opacity-70 transition-opacity"
+                  /* Home is hidden on phones: the wordmark on the left already returns to
+                     the top, and dropping it is what lets the remaining three fit on one
+                     row at a legible size instead of wrapping the header. */
+                  className={`${
+                    n.label === 'Home' ? 'hidden sm:inline' : ''
+                  } font-[family-name:var(--font-mono)] text-[0.72rem] sm:text-xs uppercase tracking-[0.1em] whitespace-nowrap hover:opacity-70 transition-opacity`}
                   style={{ color: 'var(--muted-2)' }}
                 >
                   {n.label}
@@ -1468,13 +1476,13 @@ export default function RedesignPage() {
           {/* Inset rule, matching the reference — it stops at the content padding
               rather than running full-bleed the way a plain border-bottom would. */}
           <div
-            className="absolute bottom-0 left-6 right-6 sm:left-12 sm:right-12 h-px transition-colors duration-500"
+            className="absolute bottom-0 left-5 right-5 sm:left-12 sm:right-12 h-px transition-colors duration-500"
             style={{ backgroundColor: 'var(--line)' }}
           />
         </header>
 
         {/* Main */}
-        <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-12">
+        <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-12">
           {/* Hero — sits directly on the gradient, so its type uses the theme tokens. */}
           <section
             id="top"
