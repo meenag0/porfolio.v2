@@ -220,7 +220,7 @@ const EXPERIENCE: Experience[] = [
     ],
   },
   {
-    title: 'Software Engineer',
+    title: 'Software Engineer Intern',
     company: 'Royal Bank of Canada (RBC)',
     period: 'Jan 2026 - Apr 2026',
     bullets: [
@@ -242,7 +242,7 @@ const EXPERIENCE: Experience[] = [
     ],
   },
   {
-    title: 'Site Reliability Engineer',
+    title: 'Site Reliability Engineer Intern',
     company: 'Northbridge Financial Corporation',
     period: 'May 2025 - Aug 2025',
     bullets: [
@@ -263,7 +263,7 @@ const EXPERIENCE: Experience[] = [
     ],
   },
   {
-    title: 'Software Developer',
+    title: 'Software Engineer Intern',
     company: 'Royal Bank of Canada (RBC)',
     period: 'Sept 2024 - Dec 2024',
     bullets: [
